@@ -3,33 +3,50 @@ class View {
     this.game = game;
     this.$el = $el; 
 
-    this.setupBoard()
+    this.setupBoard();
+    this.bindEvents();
   }
 
-  bindEvents() {}
+  bindEvents() {
+    $('li').on("click", event => {
+      const $currentLi = $(event.currentTarget);
 
-  makeMove($square) {}
+      if ($currentLi.attr("class") != "clicked") {
+      $currentLi.toggleClass("clicked");
+
+      let pos = $currentLi.data("donkey");
+      // console.log(pos);
+
+      this.game.playMove(pos);
+
+      const ariton = "<img src='../assets/ariton.png'></img>";
+      const sayeef = "<img src='../assets/sayeef.png'></img>";
+      this.game.currentPlayer == "o" ? $currentLi.append(sayeef) : $currentLi.append(ariton);
+      
+      if (this.game.isOver()) {
+        this.$el.append("<div>WINNER!</div>");
+        this.game.currentPlayer == "o" ? this.$el.append(sayeef) : this.$el.append(ariton);
+        setTimeout(function() {alert("GAME OVER"); location.reload(); }, 1000);
+      }
+    
+      }
+      // $currentLi.text(this.game.currentPlayer); 
+    })
+  }
+
+
+
+  // makeMove($square) {}
 
   setupBoard() {
     // const $ul = $('<ul> </ul>') 
-    
     this.$el.append('<ul>')
     
-    for (let i = 0; i < 9; i++) {
-      $('ul').append('<li> Boop </li>') 
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        $('ul').append(`<li data-donkey=[${i},${j}]></li>`)
+      }
     };
-
-    // $('ul').css({'display':'flex',
-    //  'width':'300px',
-    // 'flex-wrap':'wrap',
-    //   'border': '5px solid black'})
-
-    // $('li').css({'width':'90px',
-    //   'height':'90px', 
-    //   'border':'5px solid black'})  
-
-    
-    
   }
 }
 

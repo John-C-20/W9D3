@@ -35,7 +35,7 @@ eval("const Board = __webpack_require__(/*! ./board */ \"./src/board.js\");\ncon
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\") // require appropriate file\nconst Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\") // require appropriate file\n\n  $(() => {\n    // Your code here\n    const game = new Game(); \n    const $ttt = $('.ttt')\n    const view = new View(game, $ttt)\n\n  });\n\n\n  \n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\") // require appropriate file\nconst Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\") // require appropriate file\n\n  $(() => {\n\n    // Your code here\n    const game = new Game(); \n    const $ttt = $('.ttt')\n    const view = new View(game, $ttt)\n\n  });\n\n\n  \n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -55,7 +55,7 @@ eval("\nconst MoveError = function (msg) { this.msg = msg; };\n\n// MoveError re
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el; \n\n    this.setupBoard()\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    // const $ul = $('<ul> </ul>') \n    \n    this.$el.append('<ul>')\n    \n    for (let i = 0; i < 9; i++) {\n      $('ul').append('<li> Boop </li>') \n    };\n\n    // $('ul').css({'display':'flex',\n    //  'width':'300px',\n    // 'flex-wrap':'wrap',\n    //   'border': '5px solid black'})\n\n    // $('li').css({'width':'90px',\n    //   'height':'90px', \n    //   'border':'5px solid black'})  \n\n    \n    \n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el; \n\n    this.setupBoard();\n    this.bindEvents();\n  }\n\n  bindEvents() {\n    $('li').on(\"click\", event => {\n      const $currentLi = $(event.currentTarget);\n\n      if ($currentLi.attr(\"class\") != \"clicked\") {\n      $currentLi.toggleClass(\"clicked\");\n\n      let pos = $currentLi.data(\"donkey\");\n      // console.log(pos);\n\n      this.game.playMove(pos);\n\n      const ariton = \"<img src='../assets/ariton.png'></img>\";\n      const sayeef = \"<img src='../assets/sayeef.png'></img>\";\n      this.game.currentPlayer == \"o\" ? $currentLi.append(sayeef) : $currentLi.append(ariton);\n      \n      if (this.game.isOver()) {\n        this.$el.append(\"<div>WINNER!</div>\");\n        this.game.currentPlayer == \"o\" ? this.$el.append(sayeef) : this.$el.append(ariton);\n        setTimeout(function() {alert(\"GAME OVER\"); location.reload(); }, 1000);\n      }\n    \n      }\n      // $currentLi.text(this.game.currentPlayer); \n    })\n  }\n\n\n\n  // makeMove($square) {}\n\n  setupBoard() {\n    // const $ul = $('<ul> </ul>') \n    this.$el.append('<ul>')\n    \n    for (let i = 0; i < 3; i++) {\n      for (let j = 0; j < 3; j++) {\n        $('ul').append(`<li data-donkey=[${i},${j}]></li>`)\n      }\n    };\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 

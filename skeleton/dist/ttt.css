@@ -4,24 +4,52 @@ html, body, ul, li {
     border: 0;
     background: transparent;
   }
+
   ul {
     list-style: none;
   }
+
   ul {
-    border: 5px solid black;
-    background: orange;
+    border: 10px solid black;
     width: 300px;
     margin: 50px auto;
   }
+
   li {
     border: 5px solid black;
-    background: yellow;
+    background: gray;
     width: 90px;
     height: 90px;
     float: left;
   }
+
   ul:after {
     content: "";
     display: block;
     clear: both;
+  }
+
+  li:hover {
+    background: yellow;
+  }
+
+  li.clicked {
+    background: white;
+  }
+
+  img {
+    max-width: 85px;
+    max-height: 85px;
+    display: block;
+    margin: auto;
+  }
+
+  .ttt > img {
+    box-shadow: 0 0 40px 20px yellow;
+  }
+
+  h1, .ttt div {
+    text-align: center;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
   }
