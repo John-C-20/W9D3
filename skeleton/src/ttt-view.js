@@ -19,14 +19,14 @@ class View {
       $('ul').append('<li> Boop </li>') 
     };
 
-    $('ul').css({'display':'flex',
-     'width':'300px',
-    'flex-wrap':'wrap',
-      'border': '5px solid black'})
+    // $('ul').css({'display':'flex',
+    //  'width':'300px',
+    // 'flex-wrap':'wrap',
+    //   'border': '5px solid black'})
 
-    $('li').css({'width':'90px',
-      'height':'90px', 
-      'border':'5px solid black'})  
+    // $('li').css({'width':'90px',
+    //   'height':'90px', 
+    //   'border':'5px solid black'})  
 
     
     

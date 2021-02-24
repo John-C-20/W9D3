@@ -55,7 +55,7 @@ eval("\nconst MoveError = function (msg) { this.msg = msg; };\n\n// MoveError re
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el; \n\n    this.setupBoard()\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    // const $ul = $('<ul> </ul>') \n    \n    this.$el.append('<ul>')\n    \n    for (let i = 0; i < 9; i++) {\n      $('ul').append('<li> Boop </li>') \n    };\n\n    $('ul').css({'display':'flex',\n     'width':'300px',\n    'flex-wrap':'wrap',\n      'border': '5px solid black'})\n\n    $('li').css({'width':'90px',\n      'height':'90px', \n      'border':'5px solid black'})  \n\n    \n    \n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el; \n\n    this.setupBoard()\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    // const $ul = $('<ul> </ul>') \n    \n    this.$el.append('<ul>')\n    \n    for (let i = 0; i < 9; i++) {\n      $('ul').append('<li> Boop </li>') \n    };\n\n    // $('ul').css({'display':'flex',\n    //  'width':'300px',\n    // 'flex-wrap':'wrap',\n    //   'border': '5px solid black'})\n\n    // $('li').css({'width':'90px',\n    //   'height':'90px', \n    //   'border':'5px solid black'})  \n\n    \n    \n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 
